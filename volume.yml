@@ -1,0 +1,21 @@
+#create a new volume and create a redis pod inside it and save
+#data inside redis-storage.
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-pod
+  labels:
+    author: sohail
+spec:
+  containers:
+    - name: redis
+      image: redis
+      volumeMounts:
+        - name: redis-storage
+          mountPath: /data/redis
+  volumes:
+    - name: redis-storage
+      emptyDir: {}
+...

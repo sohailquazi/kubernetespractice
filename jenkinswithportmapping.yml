@@ -1,0 +1,20 @@
+#Create a pod definition file to start a jenkins container in a pod
+#called jenkins-pod,also perform port mapping to access the jenkins
+#from a browser.
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-pod
+  labels:
+    author: sohail
+    type: ci-cd
+spec:
+  containers:
+    - name: myjenkins
+      image: jenkins
+      ports:
+       - containerPort: 8080
+         hostPort: 8080
+...

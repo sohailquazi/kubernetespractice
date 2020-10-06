@@ -1,0 +1,25 @@
+#Create a pod definition file to start a postgres container
+#Name of the container should be mydb, pass the necessary environment
+#variables,this container should run in a pod called postgres-pod
+#and give the labels as author=sohail and type=database.
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres-pod
+  labels:
+    author: sohail
+    type: database
+spec:
+  containers:
+    - name: mydb
+      image: postgres
+      env:
+        - name: POSTGRES_PASSWORD
+          value: password
+        - name: POSTGRES_USER
+          value: user
+        - name: POSTGRES_DB
+          value: mydb
+...

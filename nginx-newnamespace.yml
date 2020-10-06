@@ -1,0 +1,16 @@
+#Create a new nginx pod inside new namespace
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  namespace: new-namespace
+  labels:
+    author: sohail
+    type: proxyserver
+spec:
+  containers:
+    - name: mynginx
+      image: nginx
+...

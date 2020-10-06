@@ -1,0 +1,34 @@
+#Create a service definition file for port mapping
+#on nginx pod
+#nginx definition file
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    author: sohail
+    type: proxy
+spec:
+  containers:
+    - name: appserver
+      image: nginx
+
+...
+
+#nginx service def file
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 30008
+  selector:
+    author: sohail
+    type: proxy
+...

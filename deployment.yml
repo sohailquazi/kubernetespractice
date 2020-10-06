@@ -1,0 +1,29 @@
+#Create a deployment file to run nginx:1.7.9 with 3 replicas
+#Later perform a rolling update to nginx:1.9.1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    author: sohail
+    type: proxyserver
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: proxyserver
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        type: proxyserver
+    spec:
+      containers:
+        - name: mynginx
+          image: nginx:1.7.9
+          ports:
+            - containerPort: 80
+              hostPort: 8888
+...

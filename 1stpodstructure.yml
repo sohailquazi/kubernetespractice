@@ -1,0 +1,16 @@
+#Create a pod definition file to start an nginx in a pod
+#name the pod as nginx-pod,name the container as appserver
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    author: sohail
+    type: appserver
+spec:
+  containers:
+    - name: appserver
+      image: nginx
+...
